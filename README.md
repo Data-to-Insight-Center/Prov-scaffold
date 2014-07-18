@@ -13,12 +13,22 @@ User Guide
 Software Dependencies
 --------------------------------
 
-1) Java Development Kit(JDK) V5 or laterAvailable at: http://java.sun.com2) KARMA Messaging Client Version 3.2.3 (for RabbitMQ karma Service Core configuration)Available at: http://sourceforge.net/projects/karmatool/files/v3.2.3/karma-v3.2.3-messaging-client-core.tar.gz/download3) Apache Ant V1.6 or laterAvailable at: http://ant.apache.org/4) Cooperating Computing Tools (cctools)Available at: http://www3.nd.edu/~ccl/software/download.shtml5) Python 2.7.6Available at: http://www.python.org/download/
+1) Java Development Kit(JDK) V5 or laterAvailable at: http://java.sun.com 
+2) KARMA Messaging Client Version 3.2.3 (for RabbitMQ karma Service Core configuration)
+Available at: http://sourceforge.net/projects/karmatool/files/v3.2.3/karma-v3.2.3-messaging-client-core.tar.gz/download
+3) Apache Ant V1.6 or later
+Available at: http://ant.apache.org/
+4) Cooperating Computing Tools (cctools)
+Available at: http://www3.nd.edu/~ccl/software/download.shtml
+5) Python 2.7.6
+Available at: http://www.python.org/download/
 
 Installing and Configuring Prov-scaffold
 ----------------------------------------------------
 
-1) Edit the build.xml file:	vi Prov-scaffold/build.xmlFor tab <property name="ProvenanceRepo.dir" value="<Your local provenance repository client path>"/>,Please edit value to your local Karma Client path;2) Build Prov-scaffold:	ant Prov-scaffold/build3) Edit Prov-scaffold Configuration File:	vi Prov-scaffold/config/config.propertyconfig.property is used to configure Prov-scaffold system. It specifies controlling parameters such as provenance granularity and layers. General information can also be specified such as time zone, etc..
+1) Edit the build.xml file:
+	vi Prov-scaffold/build.xml
+	Please edit value ProvenanceRepo.dir to your local provenance repository path;2) Build Prov-scaffold:	ant Prov-scaffold/build3) Edit Prov-scaffold Configuration File:	vi Prov-scaffold/config/config.propertyconfig.property is used to configure Prov-scaffold system. It specifies controlling parameters such as provenance granularity and layers. General information can also be specified such as time zone, etc..
 	//Adaptor_control
 	file_annotations={On,Off}
 	provenance_level={Application, Middleware, Application+Middleware}
@@ -32,7 +42,7 @@ Installing and Configuring Prov-scaffold
 This configures the connection between Prov-scaffold with your local provenance repository client. 5) Edit Shell-script	vi ./bin/Prov-scaffold-Run.shThis shell script is used to invoke Prov-scaffold to collect and process  provenance information from target systems. Please edit the following lines to set up runtime environment.JAVA_HOME Your local JAVA home pathProv-scaffold_HOME Your local Prov-scaffold pathProvenance_Repo_HOME Your local provenance repository client Path
 
 Notice: This Shell-script requires input parameters as url of target system logs and configuration file of provenance repository, which are used to collect system logs and connect to a specified provenance repository.
-	Prov-scaffold-Run.sh <provenance_repo_properties_file> <System_log>
+	Prov-scaffold-Run.sh provenance_repo_properties_file System_log
 
 Test case: SLOSH Scientific Workflow
 ---------------------------------------------------
