@@ -1,0 +1,32 @@
+config=/home/quzhou/SLOSHworkQueue/config/slosh.ini
+workQueue_HOME=/home/quzhou/SLOSHworkQueue
+logPath=/home/quzhou/SLOSHOutput/logs
+
+workQueue_setup=$workQueue_HOME/setup/work-queue-setup.sh
+workQueue_trkSelection=$workQueue_HOME/setup/selectTrackFiles.py
+workQueue_startWorkers=$workQueue_HOME/setup/start-workers.sh
+workQueue_execution=$workQueue_HOME/exe/work_queue_slosh.py
+workQueue_merge=$workQueue_HOME/exe/merge-env.sh
+workQueue_clean=$workQueue_HOME/exe/GBcleaning.sh
+workQueue_karma=/home/quzhou/SLOSHKarma
+
+setup.log: $workQueue_setup $config
+	sh $workQueue_setup $config> setup.log
+
+$logPath/trkSelection.log: $config $workQueue_trkSelection setup.log
+	python $workQueue_trkSelection $config > $logPath/trkSelection.log
+
+$logPath/worker.log: $workQueue_startWorkers $config $logPath/trkSelection.log
+	sh $workQueue_startWorkers $config > $logPath/worker.log
+
+$logPath/master.log: $config $workQueue_execution $logPath/worker.log
+	python $workQueue_execution $config > $logPath/master.log
+
+$logPath/merge.log: $config $workQueue_merge $logPath/master.log
+	sh $workQueue_merge $config > $logPath/merge.log
+
+$logPath/GBcleaning.log: $config $workQueue_clean $logPath/merge.log
+        sh $workQueue_clean $config > $logPath/GBcleaning.log
+
+$workQueue_karma: $workQueue_karma/bin/SLOSHKarmaRun.sh $workQueue_karma/config/config.properties $logPath/GBcleaning.log
+	sh $workQueue_karma/bin/SLOSHKarmaRun.sh $workQueue_karma/config/config.properties

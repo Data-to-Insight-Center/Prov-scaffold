@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#PBS -l nodes=2:ppn=8
+#PBS -l walltime=01:00:00
+#PBS -o WorkQueue$PBS_JOBID.out
+
+cat $PBS_NODEFILE
+echo "Start WorkQueue workers..."
+
+#run work_queue_worker() API
+host=i136
+port=9123
+ppn=8
+
+echo "============================="
+echo "Run WorkQueue Worker on multinodes"
+i=0
+for line in `sort -u $PBS_NODEFILE`;do
+echo "Worker is running on Node $line"
+for j in `seq 1 $ppn`;do
+	worker_num=$(($i*$ppn+$j))
+	ssh $line bash /N/u/quzhou/WorkQueue/SLOSHworkQueue/worker/submitWorker.sh $host $port $worker_num &
+	
+done
+i=$i+1	
+done
+
+sleep 800
+
+#logout the working node
+echo "============================="
+echo "Log out all working node."
+for line in `sort -u $PBS_NODEFILE`;do
+echo "Logout Node $line"
+ssh $line &
+logout
+done
+
+echo "============================="
+echo "Bare Metal Job Finished"
+exit 1
