@@ -32,14 +32,20 @@ Installing and Configuring Prov-scaffold
 ----------------------------------------------------
 
 1) Edit the build.xml file:
+
 	vi Prov-scaffold/build.xml
+	
 Please edit value ProvenanceRepo.dir to your local provenance repository path;
 
 2) Build Prov-scaffold:
+
 	ant Prov-scaffold/build
 
+
 3) Edit Prov-scaffold Configuration File:
+
 	vi Prov-scaffold/config/config.property
+	
 config.property is used to configure Prov-scaffold system. It specifies controlling parameters such as provenance granularity and layers. General information can also be specified such as time zone, etc..
 
 	//Adaptor_control
@@ -51,11 +57,15 @@ config.property is used to configure Prov-scaffold system. It specifies controll
 	email={Your Email Address}
 	timeZone={Your Time Zone}
 4) Edit provenance repository configuration file
+
 	vi Prov-scaffold/config/ProvenanceRepo.propertie
+	
 This configures the connection between Prov-scaffold with your local provenance repository client. 
 
 5) Edit Shell-script
+
 	vi ./bin/Prov-scaffold-Run.sh
+	
 This shell script is used to invoke Prov-scaffold to collect and process  provenance information from target systems. Please edit the following lines to set up runtime environment.
 	JAVA_HOME Your local JAVA home path
 	Prov-scaffold_HOME Your local Prov-scaffold path
@@ -74,16 +84,24 @@ Prov-scaffold is used here to capture provenance information from both SLOSH and
 Installing and Configuring SLOSH
 
 1) Edit config/slosh.ini file:
+
 	vi Applications/SLOSH/config/slosh.ini
+	
 config/slosh.ini is used to configure the parameters about SLOSH  such as input data and output data path, log path, etc, which will be passed to Prov-scaffold for capturing. More details can be found at docs/Prov-scaffold-UserGuide.pdf.
 
 2) Edit slosh.makeflow file
+
 	vi Applications/SLOSH/slosh.makeflow
+	
 We use slosh.makeflow as a wrapper script to automatically run SLOSH workflow and Prov-scaffold. More details can be found at docs/Prov-scaffold-UserGuide.pdf.
 
 3) Edit ProvenanceRepo.properties:
+
 	vi Prov-scaffold/config/ProvenanceRepo.propertie
+	
 For this test case, we use Karma Provenance Toolset. Configuration parameters are listed below:
+
+	\\Karma Provenance Repository Configuration
 	messaging.username={Your messaging bus username}
 	messaging.password={Your messaging bus password}
 	messaging.hostname={Your host name}
@@ -94,7 +112,9 @@ For this test case, we use Karma Provenance Toolset. Configuration parameters ar
 	messaging.routingkey={Your messaging bus routing key}
 
 4) Run SLOSH Workflow with Prov-scaffold 
+
 	makflow slosh.makeflow
+
 
 5) Viewing the Resulting Provenance Graph
 To view a provenance graph enhanced with annotations from the SLOSH data, you can use the Karma Provenance Retrieval and Visualization Plug-ins (available at: http://pti.iu.edu/d2i/provenance_karma). Instructions for installing the latest version of the Karma plug-ins for the Cytoscape visualization tool are also available at: http://pti.iu.edu/d2i/provenance_karma.
