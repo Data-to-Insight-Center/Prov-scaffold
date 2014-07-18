@@ -6,12 +6,12 @@
 	<property name="jar.dir"     value="${build.dir}/jar"/>
 	<property name="main-class"  value="KarmaAdaptor.SLOSHRun"/>
 	<property name="lib.dir"     value="lib"/>
-	<property name="karmaclient.dir" value="/home/quzhou/KarmaClient"/>
+	<property name="ProvenanceRepo.dir" value="/home/quzhou/KarmaClient"/>
 
 	<path id="classpath">
 		<fileset dir="${lib.dir}" includes="**/*.jar"/>
-		<fileset dir="${karmaclient.dir}" includes="**/lib/*.jar"/>
-		<fileset dir="${karmaclient.dir}" includes="**/build/lib/*.jar"/>
+		<fileset dir="${ProvenanceRepo.dir}" includes="**/lib/*.jar"/>
+		<fileset dir="${ProvenanceRepo.dir}" includes="**/build/lib/*.jar"/>
 	</path>
 
 	<target name="clean">

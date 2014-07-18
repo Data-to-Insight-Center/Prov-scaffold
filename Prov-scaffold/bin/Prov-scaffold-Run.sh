@@ -1,23 +1,23 @@
 #!/bin/sh
 JAVA_HOME=
-SLOSHKarma_HOME=/home/quzhou/SLOSHKarma
-KarmaClient_HOME=/home/quzhou/KarmaClient
+Prov-scaffold_HOME=/home/quzhou/SLOSHKarma
+Provenance_Repo_HOME=/home/quzhou/KarmaClient
 
-cd $KarmaClient_HOME
+cd $Provenance_Repo_HOME
 for i in $(ls lib |grep jar); do
-	CLASSPATH=$CLASSPATH:$KarmaClient_HOME/lib/$i
+	CLASSPATH=$CLASSPATH:$Provenance_Repo_HOME/lib/$i
 done
 for j in $(ls build/lib |grep jar); do
-	CLASSPATH=$CLASSPATH:$KarmaClient_HOME/build/lib/$j
+	CLASSPATH=$CLASSPATH:$Provenance_Repo_HOME/build/lib/$j
 done
 
-cd $SLOSHKarma_HOME
+cd $SProv-scaffold_HOME
 
 for i in $(ls lib |grep jar); do
-	CLASSPATH=$CLASSPATH:$SLOSHKarma_HOME/lib/$i
+	CLASSPATH=$CLASSPATH:$Prov-scaffold_HOME/lib/$i
 done
 for j in $(ls build/jar |grep jar); do
-	CLASSPATH=$CLASSPATH:$SLOSHKarma_HOME/build/jar/$j
+	CLASSPATH=$CLASSPATH:$Prov-scaffold_HOME/build/jar/$j
 done
 
 echo $CLASSPATH
@@ -26,10 +26,10 @@ function usage
 {
         echo 
         echo "#########################################"
-        echo "#            SLOSHKarmaRun.sh             #"
+        echo "#            Prov-scaffold-Run.sh             #"
         echo "#########################################"
         echo
-        echo "$ SLOSHKarmaRun.sh <properties_file> <Storgae_log>"
+        echo "$ Prov-scaffold-Run.sh <provenance_repo_properties_file> <System_log>"
 		echo
 }
 
