@@ -72,7 +72,8 @@ This shell script is used to invoke Prov-scaffold to collect and process  proven
 	Provenance_Repo_HOME Your local provenance repository client Path
 
 Notice: This Shell-script requires input parameters as url of target system logs and configuration file of provenance repository, which are used to collect system logs and connect to a specified provenance repository.
-	Prov-scaffold-Run.sh provenance_repo_properties_file System_log
+
+	Prov-scaffold-Run.sh  provenance_repo_properties_file    System_log
 
 Test case: SLOSH Scientific Workflow
 -------------------------------------
