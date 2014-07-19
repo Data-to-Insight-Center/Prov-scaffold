@@ -60,16 +60,18 @@ config.property is used to configure Prov-scaffold system. It specifies controll
 
 	vi Prov-scaffold/config/ProvenanceRepo.propertie
 	
-This configures the connection between Prov-scaffold with your local provenance repository client. 
+This configures the connection between Prov-scaffold and your local provenance repository client. 
 
 5) Edit Shell-script
 
 	vi ./bin/Prov-scaffold-Run.sh
 	
 This shell script is used to invoke Prov-scaffold to collect and process  provenance information from target systems. Please edit the following lines to set up runtime environment.
-	JAVA_HOME Your local JAVA home path
-	Prov-scaffold_HOME Your local Prov-scaffold path
-	Provenance_Repo_HOME Your local provenance repository client Path
+
+	JAVA_HOME={Your local JAVA home path}
+	Prov-scaffold_HOME={Your local Prov-scaffold path}
+	Provenance_Repo_HOME={Your local provenance repository client Path}
+
 
 Notice: This Shell-script requires input parameters as url of target system logs and configuration file of provenance repository, which are used to collect system logs and connect to a specified provenance repository.
 
